@@ -48,7 +48,7 @@ public class FollowerFiller extends AbstractTest {
     }
 
 
-//    @org.junit.Test
+    @org.junit.Test
     public void fillFollower() {
         final Random random = new Random();
         for (int i = 0; i < 10000; i++) {
