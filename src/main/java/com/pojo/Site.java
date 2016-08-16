@@ -2,9 +2,7 @@ package com.pojo;
 
 import java.net.URL;
 
-/**
- * Created by user on 04.08.2016.
- */
+
 public class Site {
 
     private long id;

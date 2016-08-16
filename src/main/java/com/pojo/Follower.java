@@ -1,14 +1,22 @@
 package com.pojo;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
  * Created by user on 04.08.2016.
  */
 public class Follower {
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String surname;
+//    @OneToMany(orphanRemoval = true)
     private List<Tag> tags;
     private Site site;
 
@@ -90,5 +98,10 @@ public class Follower {
         result = 31 * result + (getTags() != null ? getTags().hashCode() : 0);
         result = 31 * result + (getSite() != null ? getSite().hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

@@ -4,6 +4,8 @@ import com.dao.SiteDAO;
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
 import com.pojo.Site;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ import java.util.List;
  */
 public class TestSite {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
         OObjectDatabaseTx db = new OObjectDatabaseTx("local:demo1o5322122");
         if (db.exists()) {
             System.out.println("op");
@@ -28,7 +30,10 @@ public class TestSite {
         site.setId(1);
         site.setName("sd1");
         site.setIcon("sd");
-//        site.setUrl("sd")
+
+            URL url =new URL("http://example.com/");
+
+        site.setUrl(url);
 
 
         Site site1=new Site();
@@ -39,7 +44,7 @@ public class TestSite {
 
 
         SiteDAO siteDAO = new SiteDAO(db);
-//        siteDAO.save(site1);
+        siteDAO.save(site);
 //        siteDAO.save(site1);
         siteDAO.update(site,site1);
         List<Site> sites= siteDAO.getAll();

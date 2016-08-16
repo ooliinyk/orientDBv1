@@ -3,18 +3,21 @@ package com.dao;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 
 import java.util.List;
 
-
+@Component
 public abstract class AbstractDao<T> {
 
     public static final String DEFAULT_CONFIG = "memory:default";
 
     private Class<T> persistentClass;
     public OObjectDatabaseTx db;
-
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
 //    public AbstractDao(){
 //        this.db = new ODatabaseDocumentTx(DEFAULT_CONFIG);
@@ -58,6 +61,8 @@ public abstract class AbstractDao<T> {
     public abstract void delete(T obj);
 
     public abstract void print();
+
+    public abstract void deleteAll();
 }
 
 //    public List<Account> readAnimals() {

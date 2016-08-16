@@ -25,6 +25,18 @@ public class SiteDAO extends AbstractDao<Site> {
     public SiteDAO() {
     }
 
+    public Site findByID(long id){
+
+        for (Site site : db.browseClass(Site.class)) {
+
+            if(site.getId()==id){
+                return site;
+            }
+
+        }
+        return null;
+    }
+
     @Override
     public void update(Site obj, Site objNew) {
 
@@ -57,6 +69,14 @@ public class SiteDAO extends AbstractDao<Site> {
         for (Site site : db.browseClass(Site.class)) {
 
             System.out.println(site.toString());
+        }
+    }
+
+    @Override
+    public void deleteAll() {
+        for (Site site : db.browseClass(Site.class)) {
+
+            db.delete(site);
         }
     }
 }

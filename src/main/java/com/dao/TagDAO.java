@@ -2,13 +2,14 @@ package com.dao;
 
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
 import com.pojo.Tag;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by user on 10.08.2016.
  */
-
+@Component
 public class TagDAO extends AbstractDao<Tag> {
 
     public TagDAO() {
@@ -28,6 +29,18 @@ public class TagDAO extends AbstractDao<Tag> {
 
     public List<Tag> getAll() {
         return super.getAll("Tag");
+    }
+
+    public Tag findByID(long id){
+
+        for (Tag tag : db.browseClass(Tag.class)) {
+
+            if(tag.getId()==id){
+                return tag;
+            }
+
+        }
+        return null;
     }
 
     @Override
@@ -62,6 +75,15 @@ public class TagDAO extends AbstractDao<Tag> {
         for (Tag tag : db.browseClass(Tag.class)) {
 
             System.out.println(tag.toString());
+
+        }
+    }
+
+    @Override
+    public void deleteAll() {
+        for (Tag tag : db.browseClass(Tag.class)) {
+
+           db.delete(tag);
 
         }
     }

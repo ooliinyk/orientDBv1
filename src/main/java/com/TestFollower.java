@@ -17,7 +17,7 @@ import java.util.List;
 public class TestFollower {
 
     public static void main(String[] args) {
-        OObjectDatabaseTx db = new OObjectDatabaseTx("local:demo1o5322441");
+        OObjectDatabaseTx db = new OObjectDatabaseTx("local:demo111111");
         if (db.exists()) {
             System.out.println("op");
             db.open("admin", "admin");
@@ -27,15 +27,15 @@ public class TestFollower {
         }
         db.getEntityManager().registerEntityClasses("com.pojo");
 
-        Tag tag= new Tag();
+        Tag tag = new Tag();
         tag.setName("ss");
         tag.setId(1);
-        List<Tag> tags= new ArrayList<Tag>();
+        List<Tag> tags = new ArrayList<Tag>();
         tags.add(tag);
         tags.add(tag);
         tags.add(tag);
 
-        Site site=new Site();
+        Site site = new Site();
         site.setId(1);
         site.setName("sd1");
         site.setIcon("sd");
@@ -43,7 +43,7 @@ public class TestFollower {
 
         Follower follower = new Follower();
         follower.setName("alex1");
-        follower.setId(2);
+//        follower.setId(2);
         follower.setSurname("oo11");
         follower.setTags(tags);
         follower.setSite(site);
@@ -61,20 +61,28 @@ public class TestFollower {
         site1.setName("sd2");
         site1.setIcon("sd");
 //        site.setUrl("sd")
-
+//
         Follower followernew = new Follower();
         followernew.setName("alex1");
-        followernew.setId(3);
+//        followernew.setId(3);
         followernew.setSurname("oo11");
         followernew.setTags(tags1);
         followernew.setSite(site1);
-        FollowerDAO followerDAO= new FollowerDAO(db);
 
 
-        followerDAO.update(follower, followernew);
+        FollowerDAO followerDAO = new FollowerDAO(db);
+//        followerDAO.deleteAll();
+
+        followerDAO.save(followernew);   followerDAO.save(follower);
+
+
+//        followerDAO.update(follower, followernew);
         Follower follower11 = new Follower();
 //        followerDAO.save(follower);
-        for (Follower follower1 : db.browseClass(Follower.class)){
+
+        List<Follower> followers= followerDAO.getAll();
+        System.out.println(followers.toString());
+        for (Follower follower1 : db.browseClass(Follower.class)) {
 
             System.out.println(follower1.toString());
         }

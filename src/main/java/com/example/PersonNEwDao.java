@@ -23,4 +23,9 @@ public class PersonNEwDao extends AbstractDao<PersonNEwDao> {
     public void print() {
 
     }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }

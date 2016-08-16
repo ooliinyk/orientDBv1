@@ -1,10 +1,19 @@
 package com.pojo;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by user on 04.08.2016.
  */
+
 public class PushMessage {
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private Follower follower;
     private Site site;
     private Tag tag;

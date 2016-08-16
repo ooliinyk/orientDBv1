@@ -52,4 +52,9 @@ public class PersonDAO extends AbstractDao<Person> {
     public void print() {
 
     }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }

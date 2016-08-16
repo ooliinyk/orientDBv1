@@ -31,13 +31,20 @@ public class TestTag  {
         tag1.setName("tag2");
 
         TagDAO  tagDAO = new TagDAO(db);
+
+
+
 //        tagDAO.save(tag);
 //        tagDAO.save(tag);
 
-        tagDAO.update(tag1,tag);
-        List<Tag> tags = tagDAO.getAll();
+//        tagDAO.update(tag1,tag);
+//        List<Tag> tags = tagDAO.getAll();
 
-        tagDAO.printItems();
+
+//        Taggg taggg = new Taggg();
+//        taggg.save(tag1);
+//        taggg.printItems();
+//        tagDAO.printItems();
 
 //        for (Tag tagItem : tags){
 //            System.out.println(tagItem.toString());
